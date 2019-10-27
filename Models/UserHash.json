@@ -1,0 +1,9 @@
+{
+  "salt_round": 10,
+  "otp": 600,
+  "token": 600,
+  "refresh_token_expire": "90d",
+  "access_token_expire": "90d",
+  "hash_algorith": "",
+  "encrypt_algorithm": "aes192"
+}
