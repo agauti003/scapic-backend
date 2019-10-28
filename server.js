@@ -21,6 +21,15 @@ server.use(bodyParser.json({ limit: '2mb' }));
 server.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
 server.use(cookieParser());
 
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods',
+    'GET,HEAD,OPTIONS,POST,PUT');
+  res.header('Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, x-access-token, Content-Type, Accept, Authorization');
+  next();
+});
+
 server.use('/accounts', Routes.UsersRouter);
 server.use(isAuth);
 server.use('/models', Routes.ModelsRouter);

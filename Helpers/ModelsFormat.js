@@ -2,7 +2,7 @@
 export default async function formatCategories(payload) {
   const resultData = {
     categories: [],
-    totalPages: payload[0].total_page,
+    totalCategories: payload[0].total_categories ? payload[0].total_categories : 0,
   };
   for (let index = 0; index < payload.length; index++) {
     const temp = payload
