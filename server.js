@@ -31,6 +31,7 @@ server.use((req, res, next) => {
 });
 
 server.use('/accounts', Routes.UsersRouter);
+server.use('/gateway', Routes.GatewayRouter);
 server.use(isAuth);
 server.use('/models', Routes.ModelsRouter);
 

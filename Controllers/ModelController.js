@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable no-useless-constructor */
 import Controller from './Controller';
 import Models from '../Models/ModelsService';
 
