@@ -32,6 +32,32 @@ export default class Users {
     }
   }
 
+  async socialLogin(args, callback) {
+    try {
+      const Query = `Select * from users where email='${args.email}'`;
+      const encryptedEmail = await Hash.encrypt(args.email);
+      mySqlClient.query(Query, async (error, results) => {
+        if (error) {
+          callback(error, null);
+        } else if (results.length > 0) {
+          const accessToken = await Hash.generateToken(
+            { email: encryptedEmail },
+            UserHash.access_token_expire,
+          );
+          callback(null, {
+            name: results[0].name,
+            email: args.email,
+            access_token: accessToken,
+          });
+        } else {
+          callback('User Not Found', null);
+        }
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async login(args, callback) {
     try {
       const Query = `Select * from users where email='${args.email}'`;
