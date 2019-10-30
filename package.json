@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "esw *.js  --quiet ecosystem.config.js",
     "apis": "npx babel-node --presets=@babel/preset-env -- server.js",
-    "start": "nodemon --exec npm-run-all --parallel lint apis"
+    "start": "npm-run-all --parallel lint apis",
+    "start:dev": "nodemon --exec npm-run-all --parallel lint apis"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
